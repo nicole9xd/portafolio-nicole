@@ -1,0 +1,205 @@
+/* === ESTILOS GENERALES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    line-height: 1.6;
+    background-color: #959bb5; /* ✅ Fondo de la gama */
+    color: #0a1123; /* Texto oscuro */
+  }
+  
+  /* === CONTENEDORES === */
+  .container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* === HEADER === */
+  header {
+    background: #0a1123; /* ✅ Fondo header */
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header h1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  
+  .nav-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-list a:hover {
+    color: #8387c4; /* Hover con tu gama */
+  }
+  
+  /* === SECCIONES === */
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    color: #0a1123;
+  }
+  
+  /* === SOBRE MÍ === */
+  .about-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .perfil {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #3a3e6d; /* Marco foto */
+  }
+  
+  .about-text {
+    flex: 1;
+  }
+  
+  .about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: #0a1123;
+  }
+  
+  .lead {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .personal-data div {
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+    color: #0a1123;
+  }
+  
+  /* === GRID DE SEMANAS === */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .card {
+    background: #fff; /* Tarjetas claras */
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #898cab;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    color: #3a3e6d; /* Títulos de tarjetas */
+  }
+  
+  .card p {
+    margin-bottom: 1rem;
+    color: #0a1123;
+  }
+  
+  /* === BOTONES === */
+  .btn-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  
+  .btn {
+    background: #0a1123; /* Botones principales */
+    color: #fff;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s;
+  }
+  
+  .btn:hover {
+    background: #3a3e6d; /* Hover */
+  }
+  
+  .btn input[type="file"] {
+    display: none;
+  }
+  
+  /* Texto cuando se sube archivo */
+  .archivo-subido {
+    display: block;
+    font-size: 0.85rem;
+    color: #0a1123;
+    margin-top: 0.3rem;
+    word-break: break-word;
+  }
+  
+  /* === CONTACTO === */
+  .contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .contact-buttons .btn {
+    background: #3a3e6d; /* Botones contacto */
+  }
+  
+  .contact-buttons .btn:hover {
+    background: #8387c4;
+  }
+  
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    background: #0a1123;
+    color: #fff;
+    padding: 1rem 0;
+    margin-top: 2rem;
+  }
+  

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Portafolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Iniciar Sesión</h2>
+      <form onsubmit="return validarLogin(event)">
+        <div class="input-group">
+          <label for="usuario">Usuario</label>
+          <input type="text" id="usuario" placeholder="Ingresa tu usuario" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Contraseña</label>
+          <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+        </div>
+
+        <button type="submit" class="btn-login">Ingresar</button>
+      </form>
+
+      <p class="extra-text">¿No tienes cuenta? <a href="#">Regístrate</a></p>
+    </div>
+  </div>
+
+  <script>
+    function validarLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById("usuario").value;
+      const pass = document.getElementById("password").value;
+
+      // 🔑 Usuario y contraseña fijos (ejemplo)
+      if (user === "nicole" && pass === "1234") {
+        alert("✅ Bienvenida, Nicole!");
+        window.location.href = "portafolio.html"; // 👈 Redirige a tu portafolio
+      } else {
+        alert("❌ Usuario o contraseña incorrectos");
+      }
+    }
+  </script>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

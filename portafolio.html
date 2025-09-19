@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portafolio - Nicole</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container header-inner">
+      <h1>Portafolio de Nicole</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#about">Sobre mí</a></li>
+          <li><a href="#portfolio">Unidades</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SOBRE MÍ -->
+  <section id="about" class="section">
+    <div class="container about-container">
+      <img class="perfil" src="https://i.pinimg.com/736x/69/2d/a2/692da299c1a7e5a175423b948c21c56e.jpg" alt="Foto de Nicole">
+      <div class="about-text">
+        <h2>Hola, soy Nicole</h2>
+        <p class="lead">
+          Soy estudiante de <strong>Ingeniería de Sistemas en Computación</strong> en la
+          <em>Universidad Peruana Los Andes</em>. A lo largo de mi carrera he aprendido programación,
+          diseño de software y metodologías para construir soluciones.
+        </p>
+
+        <div class="personal-data">
+          <div><strong>Nacimiento:</strong> 09-08-2003</div>
+          <div><strong>Teléfono:</strong> +51 926 636 759</div>
+          <div><strong>Dirección:</strong> Huancayo, Perú</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIDADES -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2 class="section-title">Unidades de Trabajo</h2>
+
+      <main class="grid">
+        <!-- Semana 1 -->
+        <div class="card">
+          <h3>Semana 1</h3>
+          <p>Introducción y alcance</p>
+          <div class="btn-group">
+            <a href="archivos/semana1.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana1')">
+            </label>
+          </div>
+          <small id="Semana1" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 2 -->
+        <div class="card">
+          <h3>Semana 2</h3>
+          <p>Levantamiento de requerimientos</p>
+          <div class="btn-group">
+            <a href="archivos/semana2.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana2')">
+            </label>
+          </div>
+          <small id="Semana2" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 3 -->
+        <div class="card">
+          <h3>Semana 3</h3>
+          <p>Modelado de procesos (BPMN)</p>
+          <div class="btn-group">
+            <a href="archivos/semana3.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana3')">
+            </label>
+          </div>
+          <small id="Semana3" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 4 -->
+        <div class="card">
+          <h3>Semana 4</h3>
+          <p>Arquitectura (C4 + vistas)</p>
+          <div class="btn-group">
+            <a href="archivos/semana4.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana4')">
+            </label>
+          </div>
+          <small id="Semana4" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 5 -->
+        <div class="card">
+          <h3>Semana 5</h3>
+          <p>Diseño de datos (MER → SQL)</p>
+          <div class="btn-group">
+            <a href="archivos/semana5.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana5')">
+            </label>
+          </div>
+          <small id="Semana5" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 6 -->
+        <div class="card">
+          <h3>Semana 6</h3>
+          <p>Front-end base</p>
+          <div class="btn-group">
+            <a href="archivos/semana6.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana6')">
+            </label>
+          </div>
+          <small id="Semana6" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 7 -->
+        <div class="card">
+          <h3>Semana 7</h3>
+          <p>Back-end base</p>
+          <div class="btn-group">
+            <a href="archivos/semana7.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana7')">
+            </label>
+          </div>
+          <small id="Semana7" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 8 -->
+        <div class="card">
+          <h3>Semana 8</h3>
+          <p>Autenticación</p>
+          <div class="btn-group">
+            <a href="archivos/semana8.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana8')">
+            </label>
+          </div>
+          <small id="Semana8" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 9 -->
+        <div class="card">
+          <h3>Semana 9</h3>
+          <p>Integración de datos</p>
+          <div class="btn-group">
+            <a href="archivos/semana9.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana9')">
+            </label>
+          </div>
+          <small id="Semana9" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 10 -->
+        <div class="card">
+          <h3>Semana 10</h3>
+          <p>Pruebas</p>
+          <div class="btn-group">
+            <a href="archivos/semana10.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana10')">
+            </label>
+          </div>
+          <small id="Semana10" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 11 -->
+        <div class="card">
+          <h3>Semana 11</h3>
+          <p>Seguridad</p>
+          <div class="btn-group">
+            <a href="archivos/semana11.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana11')">
+            </label>
+          </div>
+          <small id="Semana11" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 12 -->
+        <div class="card">
+          <h3>Semana 12</h3>
+          <p>DevOps</p>
+          <div class="btn-group">
+            <a href="archivos/semana12.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana12')">
+            </label>
+          </div>
+          <small id="Semana12" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 13 -->
+        <div class="card">
+          <h3>Semana 13</h3>
+          <p>BI & Dashboards</p>
+          <div class="btn-group">
+            <a href="archivos/semana13.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana13')">
+            </label>
+          </div>
+          <small id="Semana13" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 14 -->
+        <div class="card">
+          <h3>Semana 14</h3>
+          <p>Ajustes finales</p>
+          <div class="btn-group">
+            <a href="archivos/semana14.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana14')">
+            </label>
+          </div>
+          <small id="Semana14" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 15 -->
+        <div class="card">
+          <h3>Semana 15</h3>
+          <p>Ensayo de sustentación</p>
+          <div class="btn-group">
+            <a href="archivos/semana15.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana15')">
+            </label>
+          </div>
+          <small id="Semana15" class="archivo-subido"></small>
+        </div>
+
+        <!-- Semana 16 -->
+        <div class="card">
+          <h3>Semana 16</h3>
+          <p>Entrega final</p>
+          <div class="btn-group">
+            <a href="archivos/semana16.pdf" target="_blank" class="btn">📄 Ver</a>
+            <label class="btn">📂 Subir
+              <input type="file" onchange="mostrarArchivo(this, 'Semana16')">
+            </label>
+          </div>
+          <small id="Semana16" class="archivo-subido"></small>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contact" class="section">
+    <div class="container" style="text-align:center">
+      <h2>Contacto</h2>
+      <div class="contact-buttons">
+        <a class="btn" href="mailto:nicolfloreslp9@gmail.com">📧 Email</a>
+        <a class="btn" href="https://www.instagram.com/?hl=es-la" target="_blank">📷 Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Nicole - Portafolio</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

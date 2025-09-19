@@ -1,0 +1,247 @@
+login.css/* === LOGIN ESTILO IGUAL AL PORTAFOLIO === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  background-color: #f5f5f7; /* ✅ Fondo claro */
+  color: #2c2c2c;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: #6c63ff;
+  color: #fff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+/* === RESET GENERAL === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    background: linear-gradient(135deg, #959bb5, #8387c4, #898cab);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* === CONTENEDOR LOGIN === */
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+  }
+  
+  .login-card {
+    background: #f9f9fb;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+  
+  .login-card h2 {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #0a1123;
+  }
+  
+  /* === INPUTS === */
+  .input-group {
+    text-align: left;
+    margin-bottom: 1.2rem;
+  }
+  
+  .input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #3a3e6d;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #959bb5;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s;
+  }
+  
+  .input-group input:focus {
+    border: 1px solid #3a3e6d;
+  }
+  
+  /* === BOTÓN === */
+  .btn-login {
+    width: 100%;
+    background: #3a3e6d;
+    color: #fff;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn-login:hover {
+    background: #0a1123;
+  }
+  
+  /* === TEXTO EXTRA === */
+  .extra-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .extra-text a {
+    color: #3a3e6d;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .extra-text a:hover {
+    text-decoration: underline;
+  }
+  
+.header-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Contenedor principal */
+.login-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Caja de login */
+.login-box {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 350px;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  color: #6c63ff;
+}
+
+.login-box .subtitle {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+/* Inputs */
+.input-group {
+  text-align: left;
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #4a4a4a;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.7rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 6px rgba(108, 99, 255, 0.5);
+  outline: none;
+}
+
+/* Botón */
+.btn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #5147cc;
+  transform: scale(1.05);
+}
+
+/* Extra links */
+.extra-links {
+  margin-top: 1.5rem;
+}
+
+.extra-links a {
+  text-decoration: none;
+  color: #6c63ff;
+  font-weight: bold;
+}
+
+.extra-links a:hover {
+  color: #5147cc;
+}
+
+/* Error */
+#error-msg {
+  margin-top: 1rem;
+  color: red;
+  font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #6c63ff;
+  color: #fff;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
