@@ -17,3 +17,4 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
 document.getElementById("guestBtn").addEventListener("click", function(){
   window.location.href = "./portafolio.html"; // 👈 Redirige al portafolio
 });
+ 
