@@ -8,4 +8,3 @@ function mostrarArchivo(input, id) {
       el.textContent = "";
     }
   }
-  
