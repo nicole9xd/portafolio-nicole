@@ -1,12 +1,15 @@
+/* Fondo */
 body {
-  font-family: "Roboto", sans-serif;
-  background-color: #959bb5; /* Fondo claro de tu gama */
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #959bb5, #8387c4);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+/* Contenedor */
 .login-container {
   display: flex;
   justify-content: center;
@@ -14,82 +17,111 @@ body {
   width: 100%;
 }
 
+/* Card */
 .login-card {
-  background: #f5f5f7; /* Tarjeta clara */
-  padding: 2rem;
+  background: #fff;
   border-radius: 15px;
-  width: 360px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  text-align: center;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  width: 380px;
 }
 
-.login-card h2 {
-  font-family: "Poppins", sans-serif;
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #e0e0f5;
+  color: #0a1123;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tab.active {
+  background: #3a3e6d;
+  color: #fff;
+}
+
+/* Formularios */
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
+
+h2 {
+  text-align: center;
   color: #3a3e6d;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .input-group {
-  margin-bottom: 1rem;
-  text-align: left;
+  margin-bottom: 15px;
 }
 
-.input-group label {
+label {
   display: block;
-  margin-bottom: 0.3rem;
-  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 14px;
   color: #0a1123;
 }
 
-.input-group input {
+input {
   width: 100%;
-  padding: 0.6rem;
+  padding: 10px;
+  border: 2px solid #959bb5;
   border-radius: 8px;
-  border: 1px solid #8387c4;
-  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
 }
 
+input:focus {
+  border-color: #3a3e6d;
+}
+
+/* Botones */
 .btn-login, .btn-guest {
   width: 100%;
-  padding: 0.7rem;
-  margin-top: 0.5rem;
+  padding: 12px;
+  margin-top: 10px;
   border: none;
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
+  font-size: 15px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
 .btn-login {
-  background-color: #3a3e6d;
+  background: #3a3e6d;
   color: #fff;
 }
 
 .btn-login:hover {
-  background-color: #8387c4;
+  background: #2c2f57;
 }
 
 .btn-guest {
-  background-color: #898cab;
+  background: #959bb5;
   color: #fff;
-  margin-top: 1rem;
 }
 
 .btn-guest:hover {
-  background-color: #959bb5;
+  background: #8387c4;
 }
 
 .extra-text {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-
-.extra-text a {
-  color: #3a3e6d;
-  text-decoration: none;
-}
-
-.extra-text a:hover {
-  text-decoration: underline;
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  margin-top: 15px;
 }
