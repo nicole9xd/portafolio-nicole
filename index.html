@@ -1,62 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Portafolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="login.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portafolio - Nicole</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="login-container">
-    <div class="login-card">
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab active" id="tab-login" onclick="mostrarForm('login')">Iniciar sesión</button>
-        <button class="tab" id="tab-register" onclick="mostrarForm('register')">Regístrate</button>
+  <!-- NAVBAR SUPERIOR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h1 class="nav-logo">Portafolio Nicole</h1>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary">Iniciar sesión</a>
+        <a href="login.html" class="btn btn-secondary">Regístrate</a> <!-- Ahora apunta a login.html -->
       </div>
-
-      <!-- Formulario de login -->
-      <form id="form-login" class="form active" onsubmit="return validarLogin(event)">
-        <h2>Iniciar Sesión</h2>
-        <div class="input-group">
-          <label for="usuario">Usuario</label>
-          <input type="text" id="usuario" placeholder="Ingresa tu usuario" required>
-        </div>
-
-        <div class="input-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
-        </div>
-
-        <button type="submit" class="btn-login">Ingresar</button>
-        <button type="button" class="btn-guest" onclick="entrarInvitado()">Entrar como invitado</button>
-      </form>
-
-      <!-- Formulario de registro -->
-      <form id="form-register" class="form" onsubmit="return registrarUsuario(event)">
-        <h2>Crear cuenta</h2>
-        <div class="input-group">
-          <label for="nuevoUsuario">Usuario (sin espacios)</label>
-          <input type="text" id="nuevoUsuario" placeholder="usuario" required>
-        </div>
-
-        <div class="input-group">
-          <label for="nombreMostrar">Nombre a mostrar</label>
-          <input type="text" id="nombreMostrar" placeholder="Nombre que aparecerá" required>
-        </div>
-
-        <div class="input-group">
-          <label for="nuevaPassword">Contraseña</label>
-          <input type="password" id="nuevaPassword" placeholder="contraseña" required>
-        </div>
-
-        <button type="submit" class="btn-login">Crear cuenta</button>
-        <p class="extra-text">La cuenta se guarda localmente en este navegador.</p>
-      </form>
     </div>
-  </div>
+  </nav>
 
-  <script src="login.js"></script>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner container">
+      <div class="hero-left">
+        <h1 class="hero-title">Hola, soy Nicole</h1>
+        <p class="hero-sub">
+          Estudiante de Ingeniería de Sistemas en Computación — aquí puedes ver mis unidades y proyectos.
+        </p>
+      </div>
+      <div class="hero-right">
+        <img class="hero-img" src="https://i.pinimg.com/736x/69/2d/a2/692da299c1a7e5a175423b948c21c56e.jpg" alt="Foto Nicole">
+      </div>
+    </div>
+  </header>
+
+  <!-- SOBRE MÍ -->
+  <section class="about container">
+    <h2>Sobre mí</h2>
+    <p>
+      Soy estudiante de <strong>Ingeniería de Sistemas en Computación</strong> en la Universidad Peruana Los Andes. 
+      Me especializo en desarrollo web, bases de datos y metodologías de software. 
+      Mi objetivo es seguir aprendiendo, mejorar cada día y aplicar mis conocimientos en proyectos reales.
+    </p>
+
+    <div class="skills">
+      <span>💻 HTML, CSS, JavaScript</span>
+      <span>⚙️ Python</span>
+      <span>🗄️ MySQL / Firebase</span>
+      <span>🎨 Diseño UX/UI</span>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>Unidades de Trabajo</h3>
+        <p>Accede a las 16 unidades con tus entregas y recursos.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Proyectos</h3>
+        <p>Proyectos destacados y documentos entregados.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Contacto</h3>
+        <p><a href="mailto:nicolfloreslp9@gmail.com" class="link">nicolfloreslp9@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Nicole - Portafolio</p>
+    </div>
+  </footer>
 </body>
 </html>

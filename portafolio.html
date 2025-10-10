@@ -1,70 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portafolio - Nicole</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio - Nicole</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="container header-inner">
-      <h1>Portafolio de Nicole</h1>
-      <nav>
-        <ul class="nav-list">
-          <li><a href="#about">Sobre mí</a></li>
-          <li><a href="#portfolio">Unidades</a></li>
-          <li><a href="#contact">Contacto</a></li>
-          <li><a href="#" id="logout">Salir</a></li> <!-- Botón salir -->
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- SOBRE MÍ -->
-  <section id="about" class="section">
-    <div class="container about-container">
-      <img class="perfil" src="https://i.pinimg.com/736x/69/2d/a2/692da299c1a7e5a175423b948c21c56e.jpg" alt="Foto de Nicole">
-      <div class="about-text">
-        <h2>Hola, soy Nicole</h2>
-        <p class="lead">
-          Soy estudiante de <strong>Ingeniería de Sistemas en Computación</strong> en la <em>Universidad Peruana Los Andes</em>. 
-          A lo largo de mi carrera he aprendido programación, diseño de software y metodologías para construir soluciones.
-        </p>
-      </div>
-    </div>
-  </section>
+<!-- BOTÓN CERRAR SESIÓN -->
+<header>
+  <div class="container header-inner">
+    <h1>Unidades de Trabajo - Portafolio</h1>
+    <button class="btn btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+</header>
 
-  <!-- UNIDADES -->
-  <section id="portfolio" class="section">
-    <div class="container">
-      <h2 class="section-title">Unidades de Trabajo</h2>
-      <main class="grid" id="portfolioGrid">
-        <!-- Aquí se generarán las semanas desde script.js -->
-      </main>
-    </div>
-  </section>
+<!-- PORTAFOLIO / UNIDADES -->
+<section id="portfolio" class="section">
+  <div class="container">
+    <h2 class="section-title">Unidades de Trabajo</h2>
+    <main class="grid">
+      <!-- SEMANAS 1 a 16 -->
+      <script>
+        const semanas = [
+          {num:1, titulo:"Introducción y alcance"},
+          {num:2, titulo:"Levantamiento de requerimientos"},
+          {num:3, titulo:"Modelado de procesos (BPMN)"},
+          {num:4, titulo:"Arquitectura (C4 + vistas)"},
+          {num:5, titulo:"Diseño de datos (MER → SQL)"},
+          {num:6, titulo:"Front-end base"},
+          {num:7, titulo:"Back-end base"},
+          {num:8, titulo:"Autenticación"},
+          {num:9, titulo:"Integración de datos"},
+          {num:10, titulo:"Pruebas"},
+          {num:11, titulo:"Seguridad"},
+          {num:12, titulo:"DevOps"},
+          {num:13, titulo:"BI & Dashboards"},
+          {num:14, titulo:"Ajustes finales"},
+          {num:15, titulo:"Ensayo de sustentación"},
+          {num:16, titulo:"Entrega final"}
+        ];
 
-  <!-- CONTACTO -->
-  <section id="contact" class="section">
-    <div class="container" style="text-align:center">
-      <h2>Contacto</h2>
-      <div class="contact-buttons">
-        <a class="btn" href="mailto:nicolfloreslp9@gmail.com">📧 Email</a>
-        <a class="btn" href="https://www.instagram.com/?hl=es-la" target="_blank">📷 Instagram</a>
-      </div>
-    </div>
-  </section>
+        semanas.forEach(semana => {
+          document.write(`
+            <div class="card">
+              <h3>Semana ${semana.num}</h3>
+              <p>${semana.titulo}</p>
+              <div class="btn-group">
+  <button class="btn" onclick="verArchivo('Semana${semana.num}')">📄 Ver</button>
+  <label class="btn">📂 Subir <input type="file" onchange="mostrarArchivo(this, 'Semana${semana.num}')"></label>
+  <button class="btn btn-delete" onclick="borrarArchivo('Semana${semana.num}')">🗑 Borrar</button>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p>© 2025 Nicole - Portafolio</p>
-    </div>
-  </footer>
+              <small id="Semana${semana.num}" class="archivo-subido"></small>
+            </div>
+          `);
+        });
+      </script>
+    </main>
+  </div>
+</section>
 
-  <script src="script.js" defer></script>
+<!-- CONTACTO -->
+<section id="contact" class="section">
+  <div class="container" style="text-align:center">
+    <h2>Contacto</h2>
+    <div class="contact-buttons">
+      <a class="btn" href="mailto:nicolfloreslp9@gmail.com">📧 Email</a>
+      <a class="btn" href="https://www.instagram.com/?hl=es-la" target="_blank">📷 Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2025 Nicole - Portafolio</p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
