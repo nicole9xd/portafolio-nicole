@@ -48,8 +48,16 @@
   <script>
     // ✅ Configura Supabase
     const supabaseUrl = 'https://kmxnmkjnzhiolfmzdnet.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtteG5ta2puemhpb2xmbXpkbmV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyOTcwMDMsImV4cCI6MjA3Mzg3MzAwM30.KMlip04UmkwBFo29VQtftss9je2HCi7mn_Ls7Ein36g'; // ⚠️ reemplázala con tu anon key real
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtteG5ta2puemhpb2xmbXpkbmV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyOTcwMDMsImV4cCI6MjA3Mzg3MzAwM30.KMlip04UmkwBFo29VQtftss9je2HCi7mn_Ls7Ein36g';
     const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // ✅ Redirige si no hay sesión activa
+    window.onload = function() {
+      const usuario = localStorage.getItem("usuarioActivo");
+      if (!usuario) {
+        window.location.href = "index.html";
+      }
+    };
 
     // ✅ Lista de semanas
     const semanas = [
@@ -102,23 +110,23 @@
 
       const nombreArchivo = `${usuario.email}/${semanaId}-${Date.now()}-${archivo.name}`;
 
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from('archivos_portafolio')
         .upload(nombreArchivo, archivo, { upsert: true });
 
       if (error) {
         console.error(error);
-        alert('❌ Error al subir el archivo.');
-      } else {
-        const { data: urlData } = supabase.storage
-          .from('archivos_portafolio')
-          .getPublicUrl(nombreArchivo);
-
-        document.getElementById(semanaId).textContent = `✅ Subido: ${archivo.name}`;
-        document.getElementById(semanaId).dataset.url = urlData.publicUrl;
-        alert('✅ Archivo subido correctamente.');
-        console.log('URL del archivo:', urlData.publicUrl);
+        alert('❌ Error al subir el archivo. Ver consola.');
+        return;
       }
+
+      const { data: urlData } = supabase.storage
+        .from('archivos_portafolio')
+        .getPublicUrl(nombreArchivo);
+
+      document.getElementById(semanaId).textContent = `✅ Subido: ${archivo.name}`;
+      document.getElementById(semanaId).dataset.url = urlData.publicUrl;
+      alert('✅ Archivo subido correctamente.');
     }
 
     // ✅ Ver archivo
@@ -132,11 +140,11 @@
       }
     }
 
-    // ✅ Borrar archivo (solo localmente en la vista)
+    // ✅ Borrar archivo de la vista
     function borrarArchivo(semanaId) {
       document.getElementById(semanaId).textContent = '';
       document.getElementById(semanaId).dataset.url = '';
-      alert('🗑 Archivo eliminado de la vista (no del servidor).');
+      alert('🗑 Archivo eliminado de la vista.');
     }
 
     // ✅ Cerrar sesión
