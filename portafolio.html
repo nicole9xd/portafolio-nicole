@@ -1,86 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portafolio - Nicole</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio - Nicole</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
-<!-- BOTÓN CERRAR SESIÓN -->
-<header>
-  <div class="container header-inner">
-    <h1>Unidades de Trabajo - Portafolio</h1>
-    <button class="btn btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
-</header>
-
-<!-- PORTAFOLIO / UNIDADES -->
-<section id="portfolio" class="section">
-  <div class="container">
-    <h2 class="section-title">Unidades de Trabajo</h2>
-    <main class="grid">
-      <!-- SEMANAS 1 a 16 -->
-      <script>
-        const semanas = [
-          {num:1, titulo:"Introducción y alcance"},
-          {num:2, titulo:"Levantamiento de requerimientos"},
-          {num:3, titulo:"Modelado de procesos (BPMN)"},
-          {num:4, titulo:"Arquitectura (C4 + vistas)"},
-          {num:5, titulo:"Diseño de datos (MER → SQL)"},
-          {num:6, titulo:"Front-end base"},
-          {num:7, titulo:"Back-end base"},
-          {num:8, titulo:"Autenticación"},
-          {num:9, titulo:"Integración de datos"},
-          {num:10, titulo:"Pruebas"},
-          {num:11, titulo:"Seguridad"},
-          {num:12, titulo:"DevOps"},
-          {num:13, titulo:"BI & Dashboards"},
-          {num:14, titulo:"Ajustes finales"},
-          {num:15, titulo:"Ensayo de sustentación"},
-          {num:16, titulo:"Entrega final"}
-        ];
-
-        semanas.forEach(semana => {
-          document.write(`
-            <div class="card">
-              <h3>Semana ${semana.num}</h3>
-              <p>${semana.titulo}</p>
-              <div class="btn-group">
-  <button class="btn" onclick="verArchivo('Semana${semana.num}')">📄 Ver</button>
-  <label class="btn">📂 Subir <input type="file" onchange="mostrarArchivo(this, 'Semana${semana.num}')"></label>
-  <button class="btn btn-delete" onclick="borrarArchivo('Semana${semana.num}')">🗑 Borrar</button>
-</div>
-
-              <small id="Semana${semana.num}" class="archivo-subido"></small>
-            </div>
-          `);
-        });
-      </script>
-    </main>
-  </div>
-</section>
-
-<!-- CONTACTO -->
-<section id="contact" class="section">
-  <div class="container" style="text-align:center">
-    <h2>Contacto</h2>
-    <div class="contact-buttons">
-      <a class="btn" href="mailto:nicolfloreslp9@gmail.com">📧 Email</a>
-      <a class="btn" href="https://www.instagram.com/?hl=es-la" target="_blank">📷 Instagram</a>
+  <!-- BOTÓN CERRAR SESIÓN -->
+  <header>
+    <div class="container header-inner">
+      <h1>Unidades de Trabajo - Portafolio</h1>
+      <button class="btn btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <p>© 2025 Nicole - Portafolio</p>
-  </div>
-</footer>
+  <!-- PORTAFOLIO / UNIDADES -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2 class="section-title">Unidades de Trabajo</h2>
+      <main class="grid" id="gridSemanas"></main>
+    </div>
+  </section>
 
-<script src="script.js" defer></script>
+  <!-- CONTACTO -->
+  <section id="contact" class="section">
+    <div class="container" style="text-align:center">
+      <h2>Contacto</h2>
+      <div class="contact-buttons">
+        <a class="btn" href="mailto:nicolfloreslp9@gmail.com">📧 Email</a>
+        <a class="btn" href="https://www.instagram.com/?hl=es-la" target="_blank">📷 Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Nicole - Portafolio</p>
+    </div>
+  </footer>
+
+  <script>
+    // ✅ Configura Supabase
+    const supabaseUrl = 'https://kmxnmkjnzhiolfmzdnet.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtteG5ta2puemhpb2xmbXpkbmV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyOTcwMDMsImV4cCI6MjA3Mzg3MzAwM30.KMlip04UmkwBFo29VQtftss9je2HCi7mn_Ls7Ein36g'; // ⚠️ reemplázala con tu anon key real
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // ✅ Lista de semanas
+    const semanas = [
+      { num: 1, titulo: "Introducción y alcance" },
+      { num: 2, titulo: "Levantamiento de requerimientos" },
+      { num: 3, titulo: "Modelado de procesos (BPMN)" },
+      { num: 4, titulo: "Arquitectura (C4 + vistas)" },
+      { num: 5, titulo: "Diseño de datos (MER → SQL)" },
+      { num: 6, titulo: "Front-end base" },
+      { num: 7, titulo: "Back-end base" },
+      { num: 8, titulo: "Autenticación" },
+      { num: 9, titulo: "Integración de datos" },
+      { num: 10, titulo: "Pruebas" },
+      { num: 11, titulo: "Seguridad" },
+      { num: 12, titulo: "DevOps" },
+      { num: 13, titulo: "BI & Dashboards" },
+      { num: 14, titulo: "Ajustes finales" },
+      { num: 15, titulo: "Ensayo de sustentación" },
+      { num: 16, titulo: "Entrega final" }
+    ];
+
+    const grid = document.getElementById('gridSemanas');
+
+    semanas.forEach(semana => {
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.innerHTML = `
+        <h3>Semana ${semana.num}</h3>
+        <p>${semana.titulo}</p>
+        <div class="btn-group">
+          <button class="btn" onclick="verArchivo('Semana${semana.num}')">📄 Ver</button>
+          <label class="btn">
+            📂 Subir
+            <input type="file" style="display:none" onchange="subirArchivo(this, 'Semana${semana.num}')">
+          </label>
+          <button class="btn btn-delete" onclick="borrarArchivo('Semana${semana.num}')">🗑 Borrar</button>
+        </div>
+        <small id="Semana${semana.num}" class="archivo-subido"></small>
+      `;
+      grid.appendChild(card);
+    });
+
+    // ✅ Subir archivo a Supabase Storage
+    async function subirArchivo(input, semanaId) {
+      const archivo = input.files[0];
+      if (!archivo) return alert('Selecciona un archivo primero.');
+
+      const usuario = JSON.parse(localStorage.getItem('usuarioActivo'));
+      if (!usuario) return alert('⚠️ Primero inicia sesión.');
+
+      const nombreArchivo = `${usuario.email}/${semanaId}-${Date.now()}-${archivo.name}`;
+
+      const { data, error } = await supabase.storage
+        .from('archivos_portafolio')
+        .upload(nombreArchivo, archivo, { upsert: true });
+
+      if (error) {
+        console.error(error);
+        alert('❌ Error al subir el archivo.');
+      } else {
+        const { data: urlData } = supabase.storage
+          .from('archivos_portafolio')
+          .getPublicUrl(nombreArchivo);
+
+        document.getElementById(semanaId).textContent = `✅ Subido: ${archivo.name}`;
+        document.getElementById(semanaId).dataset.url = urlData.publicUrl;
+        alert('✅ Archivo subido correctamente.');
+        console.log('URL del archivo:', urlData.publicUrl);
+      }
+    }
+
+    // ✅ Ver archivo
+    function verArchivo(semanaId) {
+      const span = document.getElementById(semanaId);
+      const url = span.dataset.url;
+      if (url) {
+        window.open(url, '_blank');
+      } else {
+        alert('⚠️ No hay archivo subido para esta semana.');
+      }
+    }
+
+    // ✅ Borrar archivo (solo localmente en la vista)
+    function borrarArchivo(semanaId) {
+      document.getElementById(semanaId).textContent = '';
+      document.getElementById(semanaId).dataset.url = '';
+      alert('🗑 Archivo eliminado de la vista (no del servidor).');
+    }
+
+    // ✅ Cerrar sesión
+    function cerrarSesion() {
+      localStorage.removeItem('usuarioActivo');
+      window.location.href = 'index.html';
+    }
+  </script>
+
 </body>
 </html>

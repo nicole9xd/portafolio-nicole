@@ -56,3 +56,31 @@ window.onload = function() {
     window.location.href = "index.html";
   }
 };
+const supabaseUrl = 'https://kmxnmkjnzhiolfmzdnet.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtteG5ta2puemhpb2xmbXpkbmV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyOTcwMDMsImV4cCI6MjA3Mzg3MzAwM30.KMlip04UmkwBFo29VQtftss9je2HCi7mn_Ls7Ein36g';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+const inputArchivo = document.getElementById('inputArchivo'); // tu input tipo file
+
+inputArchivo.addEventListener('change', async (event) => {
+  const archivo = event.target.files[0];
+  if (!archivo) return alert('Selecciona un archivo primero');
+
+  const usuario = JSON.parse(localStorage.getItem('usuarioActivo'));
+  const nombreArchivo = `${usuario.email}/${Date.now()}-${archivo.name}`;
+
+  const { data, error } = await supabase.storage
+    .from('archivos_portafolio')
+    .upload(nombreArchivo, archivo, { upsert: true });
+
+  if (error) {
+    console.error(error);
+    alert('❌ Error al subir el archivo');
+  } else {
+    const { data: urlData } = supabase.storage
+      .from('archivos_portafolio')
+      .getPublicUrl(nombreArchivo);
+    alert('✅ Archivo subido correctamente');
+    console.log('URL del archivo:', urlData.publicUrl);
+  }
+});
