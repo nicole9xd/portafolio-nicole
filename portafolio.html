@@ -110,7 +110,7 @@
 
       const nombreArchivo = `${usuario.email}/${semanaId}-${Date.now()}-${archivo.name}`;
 
-      const { error } = await supabase.storage
+      const {  data, error } = await supabase.storage
         .from('archivos_portafolio')
         .upload(nombreArchivo, archivo, { upsert: true });
 
