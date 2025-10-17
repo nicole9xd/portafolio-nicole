@@ -46,20 +46,18 @@
   </footer>
 
   <script>
-    // ✅ Configura Supabase
+    // Configura Supabase
     const supabaseUrl = 'https://kmxnmkjnzhiolfmzdnet.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtteG5ta2puemhpb2xmbXpkbmV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyOTcwMDMsImV4cCI6MjA3Mzg3MzAwM30.KMlip04UmkwBFo29VQtftss9je2HCi7mn_Ls7Ein36g';
-    const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtteG5ta2puemhpb2xmbXpkbmV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyOTcwMDMsImV4cCI6MjA3Mzg3MzAwM30.KMlip04UmkwBFo29VQtftss9je2HCi7mn_Ls7Ein36g'; // reemplaza con tu anon key real
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // ✅ Redirige si no hay sesión activa
-    window.onload = function() {
-      const usuario = localStorage.getItem("usuarioActivo");
-      if (!usuario) {
-        window.location.href = "index.html";
-      }
-    };
+    // Redirige si no hay sesión activa
+    const usuario = JSON.parse(localStorage.getItem("usuarioActivo"));
+    if (!usuario) {
+      window.location.href = "index.html";
+    }
 
-    // ✅ Lista de semanas
+    // Lista de semanas
     const semanas = [
       { num: 1, titulo: "Introducción y alcance" },
       { num: 2, titulo: "Levantamiento de requerimientos" },
@@ -81,6 +79,7 @@
 
     const grid = document.getElementById('gridSemanas');
 
+    // Crea las tarjetas de cada semana
     semanas.forEach(semana => {
       const card = document.createElement('div');
       card.classList.add('card');
@@ -100,17 +99,24 @@
       grid.appendChild(card);
     });
 
-    // ✅ Subir archivo a Supabase Storage
+    // Cargar archivos guardados en localStorage al iniciar
+    const archivosGuardados = JSON.parse(localStorage.getItem("archivosSubidos")) || {};
+    Object.keys(archivosGuardados).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.textContent = `✅ Subido: ${archivosGuardados[id].nombre}`;
+        el.dataset.url = archivosGuardados[id].url;
+      }
+    });
+
+    // Subir archivo a Supabase y guardar URL en localStorage
     async function subirArchivo(input, semanaId) {
       const archivo = input.files[0];
       if (!archivo) return alert('Selecciona un archivo primero.');
 
-      const usuario = JSON.parse(localStorage.getItem('usuarioActivo'));
-      if (!usuario) return alert('⚠️ Primero inicia sesión.');
-
       const nombreArchivo = `${usuario.email}/${semanaId}-${Date.now()}-${archivo.name}`;
 
-      const {  data, error } = await supabase.storage
+      const { data, error } = await supabase.storage
         .from('archivos_portafolio')
         .upload(nombreArchivo, archivo, { upsert: true });
 
@@ -124,15 +130,25 @@
         .from('archivos_portafolio')
         .getPublicUrl(nombreArchivo);
 
-      document.getElementById(semanaId).textContent = `✅ Subido: ${archivo.name}`;
-      document.getElementById(semanaId).dataset.url = urlData.publicUrl;
+      // Guardar en localStorage
+      archivosGuardados[semanaId] = {
+        nombre: archivo.name,
+        url: urlData.publicUrl
+      };
+      localStorage.setItem("archivosSubidos", JSON.stringify(archivosGuardados));
+
+      // Actualizar vista
+      const el = document.getElementById(semanaId);
+      el.textContent = `✅ Subido: ${archivo.name}`;
+      el.dataset.url = urlData.publicUrl;
+
       alert('✅ Archivo subido correctamente.');
     }
 
-    // ✅ Ver archivo
-    function verArchivo(semanaId) {
-      const span = document.getElementById(semanaId);
-      const url = span.dataset.url;
+    // Ver archivo
+    function verArchivo(id) {
+      const el = document.getElementById(id);
+      const url = el.dataset.url;
       if (url) {
         window.open(url, '_blank');
       } else {
@@ -140,19 +156,21 @@
       }
     }
 
-    // ✅ Borrar archivo de la vista
-    function borrarArchivo(semanaId) {
-      document.getElementById(semanaId).textContent = '';
-      document.getElementById(semanaId).dataset.url = '';
+    // Borrar archivo
+    function borrarArchivo(id) {
+      const el = document.getElementById(id);
+      el.textContent = '';
+      el.dataset.url = '';
+      delete archivosGuardados[id];
+      localStorage.setItem("archivosSubidos", JSON.stringify(archivosGuardados));
       alert('🗑 Archivo eliminado de la vista.');
     }
 
-    // ✅ Cerrar sesión
+    // Cerrar sesión
     function cerrarSesion() {
-      localStorage.removeItem('usuarioActivo');
-      window.location.href = 'index.html';
+      localStorage.removeItem("usuarioActivo");
+      window.location.href = "index.html";
     }
   </script>
-
 </body>
 </html>
