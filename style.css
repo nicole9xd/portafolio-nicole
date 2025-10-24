@@ -1,4 +1,3 @@
-/* --- Variables de color --- */
 :root {
   --bg1: #959bb5;
   --bg2: #8387c4;
@@ -7,7 +6,6 @@
   --muted: #898cab;
 }
 
-/* --- Reset y base --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Roboto', Arial, sans-serif;
@@ -60,6 +58,8 @@ body {
   cursor: pointer;
   font-weight: 600;
   transition: all 0.25s ease;
+  border: none;
+  font-size: 14px;
 }
 .btn-primary {
   background: var(--accent);
@@ -76,6 +76,13 @@ body {
 .btn-secondary:hover {
   background: var(--bg2);
   transform: translateY(-2px);
+}
+.btn-delete {
+  background: #c3423f;
+  color: #fff;
+}
+.btn-delete:hover {
+  background: #ff5c5c;
 }
 
 /* --- HERO / LANDING --- */
@@ -165,6 +172,84 @@ body {
   color: var(--accent);
 }
 
+/* --- PORTAFOLIO --- */
+.section { 
+  padding: 60px 0; 
+  margin-top: 60px;
+}
+.section-title {
+  text-align: center;
+  font-size: 28px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 40px;
+  color: var(--dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card h3 {
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+.card p {
+  margin-bottom: 15px;
+  color: var(--accent);
+}
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.btn input[type="file"] {
+  display: none;
+}
+
+/* --- Archivo subido --- */
+.archivo-subido {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  word-break: break-word;
+  min-height: 20px;
+}
+
+/* --- CONTACTO --- */
+#contact {
+  background: #fff;
+  border-top: 2px solid var(--bg1);
+  padding: 60px 20px;
+}
+#contact h2 {
+  margin-bottom: 25px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark);
+}
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.contact-buttons .btn {
+  font-size: 15px;
+  padding: 10px 18px;
+}
+
 /* --- FOOTER --- */
 .site-footer {
   background: var(--dark);
@@ -176,7 +261,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* --- Responsive --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .hero-inner {
     flex-direction: column;
@@ -191,50 +276,11 @@ body {
   }
 }
 
-/* --- portafolio --- */
-
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto',sans-serif; background:#f9f9f9; color:#0a1123; line-height:1.6; }
-.container { width:90%; max-width:1100px; margin:auto; }
-
-/* HEADER */
-header { background:#0a1123; padding:15px; display:flex; justify-content:space-between; align-items:center; }
-header h1 { color:#fff; font-family:'Poppins',sans-serif; }
-.btn-logout { background:#c3423f; color:#fff; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; transition:0.3s; }
-.btn-logout:hover { background:#ff5c5c; }
-
-/* SECCIONES */
-.section { padding:60px 0; }
-.section-title { text-align:center; font-size:28px; font-family:'Poppins',sans-serif; margin-bottom:40px; color:#0a1123; }
-
-/* PORTAFOLIO */
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
-.card { background:#fff; padding:20px; border-radius:12px; border:1px solid #e1e1e1; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:transform 0.2s; }
-.card:hover { transform:translateY(-4px); }
-.card h3 { margin-bottom:10px; color:#0a1123; }
-.card p { margin-bottom:15px; color:#3a3e6d; }
-.btn-group { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-
-/* BOTONES */
-.btn { display:inline-block; padding:8px 14px; font-size:14px; border-radius:6px; background:#3a3e6d; color:#fff; text-decoration:none; cursor:pointer; border:none; transition:background 0.3s; }
-.btn:hover { background:#8387c4; }
-.btn input[type="file"] { display:none; }
-.btn-delete { background:#c3423f; color:#fff; }
-.btn-delete:hover { background:#ff5c5c; }
-.archivo-subido { display:block; margin-top:8px; font-size:13px; color:#898cab; }
-
-/* CONTACTO */
-#contact { background:#fff; border-top:2px solid #959bb5; padding:60px 20px; }
-#contact h2 { margin-bottom:25px; font-family:'Poppins',sans-serif; color:#0a1123; }
-.contact-buttons { display:flex; justify-content:center; gap:20px; }
-.contact-buttons .btn { font-size:15px; padding:10px 18px; }
-
-/* FOOTER */
-footer { background:#0a1123; text-align:center; padding:15px 0; font-size:14px; color:#959bb5; }
-
-/* RESPONSIVE */
-@media (max-width:768px){
-  .grid { grid-template-columns:1fr; }
-  .contact-buttons { flex-direction:column; }
+@media (max-width: 768px){
+  .grid { grid-template-columns: 1fr; }
+  .contact-buttons { flex-direction: column; }
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
-
